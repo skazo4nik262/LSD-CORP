@@ -1,0 +1,54 @@
+﻿<Window x:Class="LSD_CORP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Furniture Management" 
+        WindowStartupLocation="CenterScreen"
+        Background="#F9F9F9"
+        Height="600" Width="900">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Furniture Management System"
+                   FontSize="20" FontWeight="Bold" Foreground="#333" Margin="0,0,0,10"/>
+
+        <!-- Основной контент -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая панель с кнопками -->
+            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                <Button Content="Add" Click="AddClick"/>
+                <Button Content="Edit" Click="EditClick"/>
+                <Button Content="Delete" Click="DelClick"/>
+                <Button Content="Materials" Click="NewMatClick"/>
+                <Button Content="Clients" Click="NewClientClick"/>
+            </StackPanel>
+
+            <!-- Правая панель с данными -->
+            <StackPanel Grid.Column="1">
+                <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="6" Padding="10" Background="White">
+                    <ListView ItemsSource="{Binding Furnitures}" SelectedItem="{Binding SelectedFurniture}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="140" DisplayMemberBinding="{Binding Title}" Header="Title"/>
+                                <GridViewColumn Width="80" DisplayMemberBinding="{Binding MakeCost}" Header="Make Cost"/>
+                                <GridViewColumn Width="80" DisplayMemberBinding="{Binding SelCost}" Header="Sale Cost"/>
+                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding MaterialId}" Header="Material ID"/>
+                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding MaterialCount}" Header="Material Count"/>
+                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding ClientId}" Header="Client ID"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
